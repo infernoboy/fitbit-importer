@@ -1,5 +1,5 @@
 /*
-* @Last modified in Sublime on Mar 06, 2020 01:16:48 PM
+* @Last modified in Sublime on Mar 06, 2020 01:19:40 PM
 */
 
 const shortcutHelperName = 'Fitbit Importer Helper';
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const token = getHashParam('access_token');
 	const userID = getHashParam('user_id');
 
-	const link = document.querySelector('#open-fitbit-importer').;
+	const link = document.querySelector('#open-fitbit-importer');
 
 	if (!token || !userID)
 		link.innerHTML = 'Missing Fitbit Authorization';
