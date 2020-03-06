@@ -1,5 +1,5 @@
 /*
-* @Last modified in Sublime on Mar 03, 2020 10:57:11 PM
+* @Last modified in Sublime on Mar 06, 2020 01:16:48 PM
 */
 
 const shortcutHelperName = 'Fitbit Importer Helper';
@@ -10,9 +10,17 @@ function getHashParam(name) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-	document.querySelector('#open-fitbit-importer').addEventListener('click', function (event) {
-		event.preventDefault();
+	const token = getHashParam('access_token');
+	const userID = getHashParam('user_id');
 
-		window.location.href = `shortcuts://run-shortcut?name=${encodeURIComponent(shortcutHelperName)}&input=text&text={"command":"save-authorization","authorization":{"access_token":"${getHashParam('access_token')}","user_id":"${getHashParam('user_id')}"}}`;
-	}, true)
+	const link = document.querySelector('#open-fitbit-importer').;
+
+	if (!token || !userID)
+		link.innerHTML = 'Missing Fitbit Authorization';
+	else
+		link.addEventListener('click', function (event) {
+			event.preventDefault();
+
+			window.location.href = `shortcuts://run-shortcut?name=${encodeURIComponent(shortcutHelperName)}&input=text&text={"command":"save-authorization","authorization":{"access_token":"${token}","user_id":"${userID}"}}`;
+		}, true);
 }, true);
